@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Kenangan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .caption {
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+            margin-top: 10px;
+        }
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <audio autoplay loop>
+        <source src="musik.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+<div class="gallery">
+    <div>
+        <img src="image1.jpg" alt="Gambar 1" onclick="openLightbox(this)">
+        <div class="caption">The only place I call home</div>
+    </div>
+    <div>
+        <img src="image2.jpg" alt="Gambar 2" onclick="openLightbox(this)">
+        <div class="caption">Every hope and dream I've ever had</div>
+    </div>
+    <div>
+        <img src="image3.jpg" alt="Gambar 3" onclick="openLightbox(this)">
+        <div class="caption">In other lifetimes, without any doubt</div>
+    </div>
+    <div>
+        <img src="image4.jpg" alt="Gambar 4" onclick="openLightbox(this)">
+        <div class="caption">I'll keep choosing you</div>
+    </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<script>
+    function openLightbox(element) {
+        var lightbox = document.getElementById("lightbox");
+        var lightboxImg = document.getElementById("lightbox-img");
+        lightbox.style.display = "block";
+        lightboxImg.src = element.src;
+    }
+
+    function closeLightbox() {
+        var lightbox = document.getElementById("lightbox");
+        lightbox.style.display = "none";
+    }
+</script>
+
+<audio controls autoplay loop>
+    <source src="musik.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+</body>
+</html>
